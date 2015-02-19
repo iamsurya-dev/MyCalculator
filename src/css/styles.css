@@ -1,0 +1,14 @@
+@CHARSET "ISO-8859-1";
+
+.textInput {
+	width: 23%;	
+}
+
+.headCalc {
+	width: 23%;
+	text-align: center;
+}
+
+input[type='button']:focus{
+	outline:none;
+} 

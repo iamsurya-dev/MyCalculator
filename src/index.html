@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Calculator">
+<meta name="author" content="Surya Vijayaraghavan">
+
+<title>Calculator</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+	
+	<script src="js/calculator.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/npm.js"></script>
+	
+<script>
+var preVal;
+
+$(document).ready(function(){
+ var calculatorKeys = {
+48: "0", 49: "1", 50: "2", 51: "3", 52: "4", 53: "5", 54: "6",
+55: "7", 56: "8", 57: "9", 42: "*", 43: "+", 45: "-", 110: ".", 47: "/", 8: "backspace",
+46: ".", 67: "c", 40: "(", 41: ")"
+};
+    $('#d').keypress(function(e){
+      if(e.keyCode==13)
+      	$('#eq').click();
+      else if (!(e.keyCode in calculatorKeys)) {
+      	console.log("Inside keycode" + e.keyCode);
+      	return false;
+      } else {
+      	console.log("Outside keycode" + String.fromCharCode(e.keyCode));
+      	
+      	if(isOperator(String.fromCharCode(e.keyCode)) && isOperator(preVal))
+      		return false;
+      	}	
+      console.log("PreVal " + preVal);	
+      preVal = String.fromCharCode(e.keyCode);
+      
+    });
+});
+</script>
+
+</head>
+<body>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2 headCalc">
+				<h2>Calculator</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2 textInput">
+				<input type="text" class="form-control" id="d" autofocus>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<input class="btn btn-default col-md-2" type="button" value="7" onclick="v('7')">
+				<input class="btn btn-default col-md-2" type="button" value="8" onclick="v('8')">
+				<input class="btn btn-default col-md-2" type="button" value="9" onclick="v('9')">
+				<input class="btn btn-default col-md-2" type="button" value="/" onclick="v('/')">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<input class="btn btn-default col-md-2" type="button" value="4" onclick="v('4')">
+				<input class="btn btn-default col-md-2" type="button" value="5" onclick="v('5')">
+				<input class="btn btn-default col-md-2" type="button" value="6" onclick="v('6')">
+				<input class="btn btn-default col-md-2" type="button" value="x" onclick="v('*')">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<input class="btn btn-default col-md-2" type="button" value="1" onclick="v('1')">
+				<input class="btn btn-default col-md-2" type="button" value="2" onclick="v('2')">
+				<input class="btn btn-default col-md-2" type="button" value="3" onclick="v('3')">
+				<input class="btn btn-default col-md-2" type="button" value="-" onclick="v('-')">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<input class="btn btn-default col-md-2" type="button" value="." onclick="v('.')">
+				<input class="btn btn-default col-md-2" type="button" value="0" onclick="v('0')">
+				<input id="eq"  class="btn btn-default col-md-2" type="button" value="=" onclick="e()">
+				<input class="btn btn-default col-md-2" type="button" value="+" onclick="v('+')">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
